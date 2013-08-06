@@ -6,6 +6,14 @@ describe RedBikini do
       self.name = traits.fetch :name
       self.mood = traits.fetch :mood
     end
+    private
+    def expose_rich_inner_world
+      'meh'
+    end
+    protected
+    def being_told_stupid_jokes
+      'nah'
+    end
   end
 
   before{RedBikini.add_to_wardrobe! Person}
@@ -35,6 +43,17 @@ describe RedBikini do
     frank.in_public{ im_a_girl! name: 'Josephine', mood: :bad}
 
     expect(frank).to eq individual
+  end
+
+
+  specify do
+    josephine = Person.new(1,'Josephine')
+    expect do
+      josephine.in_bikini{expose_rich_inner_world}
+    end.to raise_error(NoMethodError, /private/)
+    expect do
+      josephine.in_public{being_told_stupid_jokes}
+    end.to raise_error NoMethodError, /protected/
   end
 
 
