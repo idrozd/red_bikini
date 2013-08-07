@@ -5,6 +5,16 @@ describe RedBikini do
 
   before{RedBikini.add_to_wardrobe! Person}
 
+  example do
+    expect(Person.such_that do
+        name_is 'Luce'
+        friends_are %w[Tom Gia]
+        set_mood :happy
+      end.confide do
+        "#{name} is very #{mood} about #{friends * ' and '} being his friends"
+      end).to eq \
+    "Luce is very happy about Tom and Gia being his friends"
+  end
 
   specify do
     individual = Person.new.tap do |individual|
