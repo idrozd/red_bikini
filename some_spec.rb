@@ -16,32 +16,6 @@ describe RedBikini do
     "Luce is very happy about Tom and Gia being his friends"
   end
 
-  specify do
-    individual = Person.new.tap do |individual|
-      individual.id = 0b101_010
-      individual.name = 'Frank'
-      individual.friends = ['Susan', 'Rajesh']
-      individual.mood    = :good
-    end
-
-    frank = Person.such_that do
-      id_is 42
-      name_is 'Frank'
-      friends_are %w[Susan Rajesh]
-      set_mood :good
-    end
-
-    expect(frank).to eq individual
-
-    individual.tap do |individual|
-      individual.im_a_girl! name: 'Josephine', mood: :bad
-    end
-
-    frank.in_public{im_a_girl! name: 'Josephine', mood: :bad}
-
-    expect(frank).to eq individual
-  end
-
 
   specify 'confide,tell and expose return block result' do
     person = Person.such_that{name_is 'Daniel'; friends_are %w[Mary Steven]; mood_is :great}
@@ -72,6 +46,9 @@ describe RedBikini do
     specify{expect(a_person.tell{is_a? Person}).to be_true}
     specify{expect(a_person.tell{self.class}).to eq Person}
     specify{expect(a_person.tell{kind_of? Person}).to be_true}
+    specify{expect(a_person.tell{self}).to be_a Person}
+    specify{expect(a_person.tell{Person === self}).to be_true}
+    specify{expect(a_person.tell{self === Person}).to be_true}
   end
 
   describe 'closure stuff' do
@@ -83,5 +60,13 @@ describe RedBikini do
       specify{expect(joe.tell{name}).to eq 'Joe'}
     end
     specify{expect(joe.tell{HOST_CONST}).to eq 'Joe is best'}
+    specify{expect(joe.tell{OWN_CONST}).to eq 'Person const'}
+  end
+
+  describe do
+    example{expect(Person.new(1,'Jack').in_public{name ||= 'George'}.name).to eq 'Jack'}
+    example{expect(Person.new(1,nil).in_public{name ||= 'George'}.name).to eq nil}
+    example{expect(Person.new(1,nil).in_public{self.name ||= 'George'}.name).to eq 'George'}
+    example{expect(Person.new(1,nil).in_public{name_is name || 'George'}.name).to eq 'George'}
   end
 end

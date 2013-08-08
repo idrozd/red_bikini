@@ -1,4 +1,5 @@
   Person = Struct.new(:id, :name, :friends, :mood) do
+    OWN_CONST = 'Person const'
     def im_a_girl! traits
       self.name = traits.fetch :name
       self.mood = traits.fetch :mood
