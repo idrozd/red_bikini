@@ -1,5 +1,5 @@
 # What is this?
-Something you come up with when you know a little ruby and words 'public_exec' stuck in your head for a couple days
+ - Something you come up with when you know a little ruby and words 'public_exec' stuck in your head for a couple days
 
 ### cat spec/show_off_spec.rb
 ```ruby
@@ -51,3 +51,19 @@ describe RedBikini do
 end
 
 ```
+
+### Red Bikini?
+- Red for ruby, bikini for informal communication
+
+### Why?
+- It just would not let me go
+
+### So...
+Well, you`ll probably find thousand reasons not to use it yourself, 
+  but I would be really glad if it would make it`s way to some DSL ))
+
+
+  Check out other spec files for gotchas:
+  [spec/closure_binding_spec.rb](spec/closure_binding_spec.rb)
+[spec/typing_spec.rb](spec/typing_spec.rb)
+[spec/operators_spec.rb](spec/operators_spec.rb)
