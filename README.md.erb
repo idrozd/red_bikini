@@ -18,4 +18,7 @@ but I would be really glad if it would make it's way to some DSL ))
 
 
 Check out other spec files for gotchas:
-<%= %w[closure_binding typing operators].map{|spec| spec = "spec/#{spec}_spec.rb";"[#{spec}](#{spec})"}.join "\n\n" %>
+
+<%= %w[closure_binding typing operators].each do |spec| %>
+- <%= spec = "spec/#{spec}_spec.rb";"[#{spec}](#{spec})"%>
+<%end%>
