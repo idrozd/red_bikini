@@ -1,5 +1,5 @@
 module RedBikini
-  require_relative 'bikini'
+  require_relative 'red_bikini/bikini'
 
   def self.add_to_wardrobe! klass=Object
     klass.send :include, InstanceMethods
