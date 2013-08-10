@@ -1,0 +1,3 @@
+#!/bin/bash
+scripts=`dirname $(readlink -nf $0)`
+ln -s $scripts/git_hooks/pre-commit $scripts/../.git/hooks -f

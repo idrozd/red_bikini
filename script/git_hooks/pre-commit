@@ -1,0 +1,2 @@
+#!/bin/bash
+for t in *.erb; do o=$(basename $t .erb); erb $t > $o; git add $o; done
