@@ -5,25 +5,29 @@ describe RedBikini do
 
   before{RedBikini.add_to_wardrobe! Person}
 
-  example do
+  example 'punchline', contrived: true do
     expect(Person.such_that do
         name_is 'Luce'
         friends_are %w[Tom Gia]
-        set_mood :happy
-      end.confide do
-        "#{name} is very #{mood} about #{friends * ' and '} being his friends"
+        set_nickname 'Happy'
+      end.confide('the cinema') do |where|
+        "#{friends * ', '} and '#{nickname}' #{name} are heading to #{where}"
       end).to eq \
-    "Luce is very happy about Tom and Gia being his friends"
+    "Tom, Gia and 'Happy' Luce are heading to the cinema"
   end
 
+  describe 'Kernel#which' do
+    example :even_more_contrived do
+      [Person.new(nil, 'George'),
+       Person.new(nil, 'Kevin' ),
+       Person.new(nil, 'Steven'),
+       Person.new(22)].
 
-  specify 'confide,tell and expose return block result' do
-    person = Person.such_that{name_is 'Daniel'; friends_are %w[Mary Steven]; mood_is :great}
+      find_all(&which{name and name =~ /ev/}).
 
-    expect(person.tell{"#{name} and #{friends.join ' and '} are friends"})
-    .to eq 'Daniel and Mary and Steven are friends'
-
-    expect(person.confide{"I feel #{mood}!"}).to eq 'I feel great!'
+      map(&:name).
+      should eq %w[Kevin Steven]
+    end
   end
 
 
@@ -47,8 +51,15 @@ describe RedBikini do
     specify{expect(a_person.tell{self.class}).to eq Person}
     specify{expect(a_person.tell{kind_of? Person}).to be_true}
     specify{expect(a_person.tell{self}).to be_a Person}
-    specify{expect(a_person.tell{Person === self}).to be_true}
-    specify{expect(a_person.tell{self === Person}).to be_true}
+    specify :gotcha do
+      expect(a_person.tell{Person === self}).to be_false
+
+      expect(a_person.tell{Person === _self}).to be_true
+      expect(a_person.tell{Person === @__in_bikini__}).to be_true
+    end
+    specify{expect(a_person.tell{self === Person}).to be_false} # As expected
+    specify{expect(a_person.tell{self === Person.new(1)}).to be_true} # As expected
+    specify{RedBikini.add_to_wardrobe! Class; expect(Fixnum.tell{self === 1}).to be_true}
   end
 
   describe 'closure stuff' do
