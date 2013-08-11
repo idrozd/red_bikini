@@ -1,10 +1,11 @@
-require 'active_support/core_ext/module/delegation'
-
+require 'forwardable'
 class RedBikini::Bikini
+  extend ::Forwardable
+
+
   def initialize object
     @__in_bikini__ = object
   end
-  delegate :is_a?, :kind_of?, :instance_of?, :class, to: :@__in_bikini__
 
   def === other
     @__in_bikini__ === other
@@ -34,4 +35,8 @@ class RedBikini::Bikini
       String(method).match(setter_matcher){|match| return match['attr'] + ?= }
     end
   end
+
+  def_delegators :@__in_bikini__, :is_a?, :kind_of?, :instance_of?, :class
+
+
 end
