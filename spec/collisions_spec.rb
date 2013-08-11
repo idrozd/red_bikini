@@ -9,8 +9,12 @@ describe RedBikini, 'name collisions' do
 
     RedBikini.add_to_wardrobe! Battlecruiser
 
-    Battlecruiser.such_that do
+    battlecruiser = Battlecruiser.such_that do
       set_the_course 'nowhere'
-    end.the_course.should be_nil
+      captain_has_parrot_is true
+    end
+
+    battlecruiser.the_course.should be_nil
+    battlecruiser.captain_has_parrot.should eq true
   end
 end
