@@ -67,7 +67,7 @@ I would note that inside it uses instance exec applied to a wrapper around
 reciever, so it wouldn`t bind calling context methods (which is good), 
 but binds locals and constants.
 - Also, or/equal (||=) won`t work directly without specifiyng explicit receiver of course (self will work)
-- Also, self wouldn`t work with case operator - I don`t want to hack reciever class .=== just for that.
+- Also, self wouldn't work with case operator - I don't want to hack reciever class .=== just for that.
 Although, you may use _self for this (original object).
 
 
