@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RedBikini::VERSION
   spec.authors       = ["Andrey Titov"]
   spec.email         = ["terracote@gmail.com"]
-  spec.description   = %q{think of public_exec:}
-  spec.summary       = %q{ instance_exec run on wrapped receiver, with respect to private methods and setter aliases}
+  spec.description   = %q{run code in object context without worrying about private/protected access}
+  spec.summary       = %q{think of public_exec: instance_exec run on wrapped receiver, with respect to private methods and setter aliases}
   spec.homepage      = "https://github.com/idrozd/red_bikini"
   spec.license       = "MIT"
 
