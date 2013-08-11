@@ -21,11 +21,11 @@ describe RedBikini do
     let(:josephine){ Person.new(1,'Josephine')}
     specify do
       expect{josephine.tell{credit_card_number}}
-      .to raise_error(NoMethodError, /private/)
+      .to raise_error NoMethodError # private
     end
     specify do
       expect{josephine.expose{girly_secrets}}
-      .to raise_error NoMethodError, /protected/
+      .to raise_error NoMethodError # protected
     end
   end
 

@@ -29,11 +29,11 @@ describe RedBikini do
     let(:josephine){ Person.new(1,'Josephine')}
     specify do
       expect{josephine.tell{credit_card_number}}
-      .to raise_error(NoMethodError, /private/)
+      .to raise_error NoMethodError # private
     end
     specify do
       expect{josephine.expose{girly_secrets}}
-      .to raise_error NoMethodError, /protected/
+      .to raise_error NoMethodError # protected
     end
   end
 
@@ -52,6 +52,24 @@ describe RedBikini do
   end
 
 end
+
+```
+### cat spec/person.rb
+```ruby
+  Person = Struct.new(:id, :name, :friends, :nickname) do
+    OWN_CONST = 'Person const'
+    def === other
+      other.respond_to? :id and id == other.id
+    end
+    private
+    def credit_card_number
+      'meh'
+    end
+    protected
+    def girly_secrets
+      'nah'
+    end
+  end
 
 ```
 
