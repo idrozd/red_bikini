@@ -15,8 +15,12 @@ class RedBikini::Bikini
   end
 
   def object_method method
-    setter_imitated_by(method) or method
+    original(method) or setter_imitated_by(method)
   end
+  def original method
+    @__in_bikini__.respond_to?(method, true) and method
+  end
+
   def respond_to_missing? method, *args
     @__in_bikini__.respond_to?(object_method(method), *args)
   end
