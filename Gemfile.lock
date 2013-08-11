@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    red_bikini (0.0.1)
+    red_bikini (0.0.2)
 
 GEM
   remote: https://rubygems.org/
