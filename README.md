@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/idrozd/red_bikini.png?branch=master)](https://travis-ci.org/idrozd/red_bikini)
+
 # What is this?
 Something you come up with when you know a little ruby and words `public_exec` stuck in your head for a couple days:
 `instance_exec` on wrapper around receiver to conceal private methods, with aliased setters
