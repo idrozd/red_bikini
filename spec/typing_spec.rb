@@ -5,7 +5,9 @@ describe RedBikini do
   describe 'hacked typing' do
     let(:a_person){Person.new(1,'Joe')}
     specify{expect(a_person.tell{self.is_a? Person}).to be_true}
+    specify{expect(a_person.tell{self.instance_of? Person}).to be_true}
     specify{expect(a_person.tell{is_a? Person}).to be_true}
+    specify{expect(a_person.tell{instance_of? Person}).to be_true}
     specify{expect(a_person.tell{self.class}).to eq Person}
     specify{expect(a_person.tell{kind_of? Person}).to be_true}
     specify{expect(a_person.tell{self}).to be_a Person}
