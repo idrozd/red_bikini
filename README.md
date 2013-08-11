@@ -79,3 +79,5 @@ Although, you may use _self for this (original object).
 
 - [spec/aliases_spec.rb](spec/aliases_spec.rb)
 
+- [spec/collisions_spec.rb](spec/collisions_spec.rb)
+

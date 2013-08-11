@@ -24,6 +24,6 @@ but binds locals and constants.
 - Also, self wouldn't work with case operator - I don't want to hack reciever class .=== just for that.
 Although, you may use _self for this (original object).
 
-<% %w[closure_binding typing operators aliases].each do |spec| %>
+<% %w[closure_binding typing operators aliases collisions].each do |spec| %>
 - <%= spec = "spec/#{spec}_spec.rb";"[#{spec}](#{spec})"%>
 <% end %>
