@@ -10,9 +10,9 @@ describe RedBikini do
   example 'punchline', contrived: true do
     time = '17:00'
 
-    expect("Tom, Gia and 'Happy' Luce are heading to the cinema at 17:00").to eq(
+    expect("Tom, Gia and 'Happy' Mike are heading to the cinema at 17:00").to eq(
       Person.such_that do
-        name_is 'Luce'
+        name_is 'Mike'
         friends_are %w[Tom Gia]
         set_nickname 'Happy'
       end.confide('the cinema') do |where|
