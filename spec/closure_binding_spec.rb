@@ -14,9 +14,9 @@ describe RedBikini do
       HOST_CONST = 'Joe is best'
       specify{expect(joe.tell{HOST_CONST}).to eq 'Joe is best'}
     end
-    context 'Host const shadows own', :gotcha do
-      before{stub_const 'OWN_CONST', 'Shadowing person const'}
-      specify{(expect joe.tell{OWN_CONST}).to eq 'Shadowing person const'}
+    specify 'Host const shadows own with same name', :gotcha do
+      stub_const 'OWN_CONST', 'Shadowing person const'
+      (expect joe.tell{OWN_CONST}).to eq 'Shadowing person const'
     end
     specify{expect(joe.tell{OWN_CONST}).to eq 'Person const'}
   end

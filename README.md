@@ -106,7 +106,7 @@ RedBikini
   hacked typing
     ClassInBikini === self # => false
 
-Finished in 0.00365 seconds
+Finished in 0.00359 seconds
 3 examples, 0 failures
 
 

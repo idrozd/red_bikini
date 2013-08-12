@@ -11,9 +11,11 @@ describe RedBikini do
     specify{expect(a_person.tell{self.class}).to eq Person}
     specify{expect(a_person.tell{kind_of? Person}).to be_true}
     specify{expect(a_person.tell{self}).to be_a Person}
-    specify :gotcha do
+    specify 'ClassInBikini === self # => false', :gotcha do
       expect(a_person.tell{Person === self}).to be_false
+    end
 
+    specify do
       expect(a_person.tell{Person === _self}).to be_true
       expect(a_person.tell{Person === @__in_bikini__}).to be_true
     end
