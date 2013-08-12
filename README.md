@@ -92,21 +92,21 @@ but binds locals and constants.
 Although, you may use `_self` for this (original object).
 
 ### rspec --tag gotcha --format documentation
+<pre>
 Run options: include {:gotcha=>true}
 
-RedBikini
-  closure stuff
-    Host const shadows own with same name
+RedBikini closure stuff
+  Host const shadows own with same name
 
 RedBikini operators
   {attr ||= val} will create block-local var shadowing attr
 
-RedBikini
-  hacked typing
-    ClassInBikini === self # => false
+RedBikini hacked typing
+  ClassInBikini === self # => false
 
-Finished in 0.00359 seconds
+Finished in 0.00404 seconds
 3 examples, 0 failures
 
+</pre>
 
 [Detailed behavior](spec/behavior)
