@@ -24,7 +24,6 @@ It just would not let me go
 You probably shouldn't use this for serious things, but I wouldn't discourage you from it of course.
 Some kind of DSL sounds as a candidate topic.
 
-Check out other specs for gotchas.
 I would note that inside it uses instance exec applied to a wrapper around
 reciever, so it wouldn`t bind calling context methods (which is good), 
 but binds locals and constants.
@@ -35,6 +34,4 @@ Although, you may use `_self` for this (original object).
 ### <%= c = "rspec --tag gotcha --format documentation" %>
 <%= `#{c}`%>
 
-<% %w[closure_binding typing operators aliases collisions].each do |spec| %>
-- <%= spec = "spec/#{spec}_spec.rb";"[#{spec}](#{spec})"%>
-<% end %>
+[Detailed behavior](spec/behavior)

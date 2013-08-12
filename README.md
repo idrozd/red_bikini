@@ -84,7 +84,6 @@ It just would not let me go
 You probably shouldn't use this for serious things, but I wouldn't discourage you from it of course.
 Some kind of DSL sounds as a candidate topic.
 
-Check out other specs for gotchas.
 I would note that inside it uses instance exec applied to a wrapper around
 reciever, so it wouldn`t bind calling context methods (which is good), 
 but binds locals and constants.
@@ -110,14 +109,4 @@ Finished in 0.00359 seconds
 3 examples, 0 failures
 
 
-
-- [spec/closure_binding_spec.rb](spec/closure_binding_spec.rb)
-
-- [spec/typing_spec.rb](spec/typing_spec.rb)
-
-- [spec/operators_spec.rb](spec/operators_spec.rb)
-
-- [spec/aliases_spec.rb](spec/aliases_spec.rb)
-
-- [spec/collisions_spec.rb](spec/collisions_spec.rb)
-
+[Detailed behavior](spec/behavior)
