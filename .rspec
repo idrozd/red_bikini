@@ -1,2 +1,3 @@
 --require ./lib/red_bikini
 --require ./spec/person
+--require ./spec/spec_helper

@@ -92,6 +92,24 @@ but binds locals and constants.
 - Also, `self` wouldn't work with `case` operator - I don't want to hack reciever class `.===` just for that.
 Although, you may use `_self` for this (original object).
 
+### rspec --tag gotcha --format documentation
+Run options: include {:gotcha=>true}
+
+RedBikini
+  closure stuff
+    Host const shadows own with same name
+
+RedBikini operators
+  {attr ||= val} will create block-local var shadowing attr
+
+RedBikini
+  hacked typing
+    ClassInBikini === self # => false
+
+Finished in 0.00365 seconds
+3 examples, 0 failures
+
+
 
 - [spec/closure_binding_spec.rb](spec/closure_binding_spec.rb)
 
